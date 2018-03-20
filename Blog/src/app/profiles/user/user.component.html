@@ -1,0 +1,19 @@
+<div class="ui centered card">
+    <div class="image">
+      <img src="{{appService.user.image}}">
+    </div>
+    <div class="content">
+      <a class="header">{{appService.user.name}}</a>
+      <div class="meta">
+        <span class="date">Joined on {{appService.user.date | date:'EEE, dd MMM yyyy'}}</span>
+      </div>
+      <div class="description">
+          <p>Phone : {{appService.user.phone}}</p>
+       <p>Activation Status : 
+       <span *ngIf="appService.user.activated" style="color: green" >Activated</span>
+       <span *ngIf="!appService.user.activated" style="color: red" >Not Activated Yet</span> </p>
+
+      </div>
+    </div>
+   
+  </div>

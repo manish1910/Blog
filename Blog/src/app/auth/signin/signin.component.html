@@ -1,0 +1,55 @@
+<div *ngIf="this.appService.user">
+  <div class="ui message">
+    <div class="ui centered header">
+      You are already logged in !
+      <br><br>
+      <button routerLink="/" class="ui primary button">Back to Home</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!this.appService.user">
+  <div class="ui segment text container">
+    <h1 class="ui teal image header">
+      <div class="content">
+       BlogField Login
+      </div>
+    </h1>
+    <hr>
+    <form class="ui form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+      <div class="field">
+        <label>Username</label>
+        <div class="ui leftmost icon input">
+          <i class="user icon"></i>
+          <input type="text" name="username" ngModel #f1="ngModel" required autofocus>
+        </div>
+        <div class="customValid" *ngIf="f1.touched && f1.invalid">
+          Username is required !
+        </div>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="ui leftmost icon input">
+          <i class="lock icon"></i>
+          <input type="password" name="password" #f2="ngModel" ngModel required >
+        </div> 
+      </div>
+       <div class="customValid" *ngIf="f2.touched && f2.invalid">
+          Password is required !
+        </div> 
+        <div>
+          <input type="submit" [disabled]="f.invalid" value="Login" class="ui fluid large teal button">
+           <p style="display:inline-block;">Haven't account yet ? <a routerLink="/register" >Sign Up</a></p>
+       </div>
+      <!-- <div>
+        <button class="ui fluid large teal button">Login</button>
+        <div class="ui text container">
+          <H5>Need An Account  <a  href="/register">Sign Up now!!!</a></H5> 
+        </div>
+      </div> -->
+
+    </form>
+
+  </div>
+</div>  

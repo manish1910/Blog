@@ -1,0 +1,15 @@
+<!-- <div class="ui main text container"> -->
+         
+  <h1>All Blogs</h1>
+  <hr>
+  
+  <!-- <div >
+     <div class="ui active inverted dimmer"></div> 
+     <div class="ui massive text loader">Loading All Blogs... </div> 
+    </div>
+  </div> -->
+  <app-blog *ngFor="let blog of blogs" [blog]="blog" >   
+  </app-blog>
+  
+  
+  <!-- </div> -->

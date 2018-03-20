@@ -1,0 +1,42 @@
+<div *ngIf="blog">
+  <div class="ui main text container">
+    <div class="ui raised segment">
+
+      <div class="ui centered header">
+        {{ blog.title}}
+      </div>
+      <img class="ui centered rounded large image" src="{{ blog.image }}">
+      <h4>
+        {{ blog.date | date : 'dd/MMM/yyyy' }} | Created By 
+        <span class="userspan">
+          {{ blog.author.name }}
+        </span>
+      </h4>
+      <p>
+        {{ blog.desc }}
+      </p>
+      <br>
+      <br>
+      <form class="like">
+        <div class="ui left labeled button" tabindex="0">
+          <div class="ui basic right label">
+            {{ blog.likes }}
+          </div>
+          <button (click)="onLike()" [disabled]="deletedButton" class="ui button likem">
+            <i  class="thumbs up icon"></i>
+          </button>
+        </div>
+      </form>
+      <button (click)="onDelete()" class="ui mini red button article" >Delete</button>
+      <button  routerLink="edit"   class="ui mini green button article" [disabled]="deleteButton">Edit</button>
+      <app-comment *ngFor="let comment of blog.comments" [comment]="comment"  ></app-comment>
+      <hr>
+      <form  class="ui form" (ngSubmit)="onComment()" >
+        <div class="field">
+         <textarea class="textarea" type="textarea" rows="5" name="content" [(ngModel)]="comment" required></textarea>
+        </div>
+        <input type="submit" value="Comment" class="ui mini primary button" [disabled]="deleteButton">
+      </form>
+    </div>
+  </div>
+</div>

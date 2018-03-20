@@ -1,0 +1,33 @@
+<div *ngIf="blog">
+  <div class="ui items raised segment">
+    <div class="item">
+      <div class="image viii">
+        <img src="{{ blog.image }}">
+      </div>
+      <div class="content">
+        <div class="header">
+          {{ blog.title }}
+        </div>
+        <div class="meta">
+          <span>{{ blog.date | date:'dd/MMM/yyyy' }}</span>
+        </div>
+        <div class="description">
+          <p>{{ blog.desc | short:50 }}</p>
+        </div>
+
+        <div class="extra">
+          <div class="ui left labeled button" tabindex="0">
+            <div class="ui basic right label">
+              {{ blog.likes }}
+            </div>
+            <a class="ui button likem">
+              Likes
+            </a>
+          </div>
+          <a class="mini ui primary button" [routerLink]=[blog._id]>Read more</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

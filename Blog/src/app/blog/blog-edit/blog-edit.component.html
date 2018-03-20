@@ -1,0 +1,52 @@
+<div *ngIf="article || !editMode">
+<div class="ui segment text  container">
+<div *ngIf="editMode" class="ui large header">Edit- {{blog.title}}</div>
+<div *ngIf="!editMode" class="ui large header">New Blog</div>
+  
+<hr>
+
+
+<form  class="ui form" (ngSubmit)="onSubmit(f)" #f="ngForm" >
+
+<div class="field">
+
+<label>Title</label>
+<input type="text" name="title" [(ngModel)]="title" #f1="ngModel" required  autofocus>
+</div>
+<div class="customValid" *ngIf="f1.touched && f1.invalid">
+Title is required !
+
+</div>
+
+<div class="field">
+<label>Image URL</label>
+<input type="text" name="image" [(ngModel)]="image" #f2="ngModel" required>
+</div> 
+<div class="customValid" *ngIf="f2.touched && f2.invalid">
+Image is required !
+</div>
+
+<div class="field">
+<label>User Text</label>
+<textarea name="desc" [(ngModel)]="desc" #f3="ngModel" required></textarea>
+</div>
+<div class="customValid" *ngIf="f3.touched && f3.invalid">
+Description is required !
+</div>
+
+
+
+  <button  type="submit" [disabled]="f.invalid" class="ui primary small button">Save</button>
+  <button  type="button" (click)="onCancel()" class="ui small red  button">Cancel</button>
+  
+
+
+
+
+
+
+
+</form>
+
+</div>
+</div>

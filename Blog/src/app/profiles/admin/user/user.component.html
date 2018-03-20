@@ -1,0 +1,37 @@
+<div *ngIf="user">
+  <div id="userComponent" class="ui raised segment">
+
+<div class="ui items">
+<div class="item">
+  <div class=" image">
+    <img src="{{user.image}}">
+  </div>
+  <div class="middle aligned content">
+    <div class="header">
+      {{user.name}}
+    </div>
+    <div class="description">
+      <h5>Joined On {{user.date | date:'dd/MMM/yyyy'}}</h5>
+      <p>Phone : {{user.phone}}</p> 
+      <p>Activation: <span *ngIf="user.activated" style="color:lawngreen;">Activated</span>
+        <span *ngIf="!user.activated" style="color:red;">Pending</span>
+      </p>
+    </div>
+    <div class="extra">
+      <div (click)="onActivate()" *ngIf="user.activated" class="ui primary button">
+        Deactivate
+      </div>
+      <div (click)="onActivate()" *ngIf="!user.activated" class="ui primary button">
+        Activate
+      </div>
+      <div (click)="onAdmin()" *ngIf="user.activated&&(!user.isAdmin)" class="ui primary button">
+       Make Admin
+      </div>
+      <div (click)="onDelete()" class="ui red right floated button">
+        Delete User
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

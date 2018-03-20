@@ -1,0 +1,85 @@
+<div *ngIf="admin">
+  <!-- <div> -->
+  <!-- <div class="ui main text container"> -->
+    <div  id="adminpannel" class="ui raised segment">
+  
+      <div class="ui huge centered header">Admin Pannel</div>
+      <hr>
+      <div  class="image" >
+        <img src="{{admin.image}}">
+      </div>
+      
+      <div class="ui items">
+        <div class="item">
+          
+          <div class="content">
+            <a class="header">{{admin.name}}</a>
+            <div class="meta">
+              <span>Description</span>
+            </div>
+            <div class="description">
+  
+              <p>Username : {{admin.username}}</p>
+            
+              <p>Phone : {{admin.phone}}</p>
+            </div>
+            <div class="extra">
+              Additional Details
+              <p>Joined On : {{admin.date | date:'dd/MMM/yyyy'}}</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  
+   <div id="totalUsers" class="ui message"> 
+    <div class="statistic">
+        <div class="value">
+          {{appService.userCount}}
+        </div>
+        <div class="label">
+          Users
+        </div>
+      </div>
+    </div>
+  
+  
+    <div id="totalActivated" class="ui message"> 
+        <div class="statistic">
+            <div class="value">
+                {{appService.activatedCount}}
+            </div>
+            <div class="label">
+              Activated
+            </div>
+          </div>
+        </div>
+  
+        <div id="totalAdmin" class="ui message"> 
+            <div class="statistic">
+                <div class="value">
+                    {{appService.adminCount}}
+                </div>
+                <div class="label">
+                Admins
+                </div>
+              </div>
+            </div>
+  <!-- </div> -->
+  <!-- </div> -->
+  <div id="myusers">
+  
+    <!-- <div class="ui huge header">Users List</div> -->
+    <!-- <div *ngIf="!users" class="loadingUsers" >
+      <div class="ui active inverted dimmer">
+        <div class="ui massive text loader">Loading Users... </div>
+      </div>
+    </div> -->
+  
+    <app-users *ngFor="let user of users"  [user]="user" ></app-users>
+     
+  </div>
+  </div>
+  <!-- </div> -->

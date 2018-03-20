@@ -1,0 +1,79 @@
+<div *ngIf="this.appService.user">
+  <div class="ui message">
+    <div class="ui centered header">
+      You need to logout for new registration!
+      <br><br>
+      <button routerLink="/" class="ui primary button">Back to Home</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="!this.appService.user">
+  <div class="ui segment text container">
+    <h2 class="ui teal image header">
+      <div class="content">
+        Sign-up for BlogField
+      </div>
+    </h2>
+
+    <hr>
+
+    <form class="ui form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+      <div class="field">
+        <label>Name</label>
+        <input type="text" name="name" #f1="ngModel" ngModel required autofocus>
+      </div>
+      <div class="customValid" *ngIf="f1.touched && f1.invalid">
+        Name is required !
+      </div>
+      <!-- <div class="field">
+        <label>Date Of Birth</label>
+        <input type="text" name="dateOfBirth" ngModel autofocus>
+      </div> -->
+      <div class="field">
+        <label>Mobile Number</label>
+        <input type="text" name="phone" ngModel #f2="ngModel" required>
+      </div>
+      <div class="customValid" *ngIf="f2.touched && f2.invalid">
+        Mobile Number is required !
+      </div>
+      <div class="field">
+        <label>Image Url</label>
+        <input type="text" name="image" ngModel  #f3="ngModel" required>
+      </div>
+      <div class="customValid" *ngIf="f3.touched && f3.invalid">
+        Image is required !
+      </div>
+      <!-- <div class="field">
+        <label>Type</label>
+        <select name="access" id="access">
+          <option value="user">User</option>
+          <option value="publisher">Publisher</option>
+        </select>
+      </div>  -->
+      <div class="field">
+        <label>Username</label>
+        <div class="ui leftmost icon input">
+          <i class="user icon"></i>
+          <input type="text" name="username" ngModel #f4="ngModel"  required >
+        </div>
+        <div class="customValid" *ngIf="f4.touched && f4.invalid">
+          Username is required !
+        </div>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="ui leftmost icon input">
+          <i class="lock icon"></i>
+          <input type="password" name="password" ngModel #f5="ngModel" required>
+        </div>
+        <div class="customValid" *ngIf="f5.touched && f5.invalid">
+          Password is required !
+        </div>
+      </div>  
+      <input type="submit" [disabled]="f.invalid" value="Register" class="ui  fluid large teal button">
+     <p style="display:inline-block;">Already have an account ? <a routerLink="/login">Login</a></p>
+      <!-- <button class="ui fluid large teal button">Sign-Up</button> -->
+    </form>
+  </div>
+</div> 

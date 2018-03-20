@@ -1,0 +1,24 @@
+<div *ngIf="comment">
+  <hr>
+    <div class="ui comments">
+      <div class="comment">
+        <a class="avatar">
+          <img src="{{comment.author.image}}">
+        </a>
+        <div class="content">
+          <a class="author">{{comment.author.name}}</a>
+          <div class="text">
+            {{comment.content}}
+          </div>
+          <div class="actions">
+            <textarea  *ngIf="editCmtMode" class="textarea" type="textarea" rows="3" name="content" [(ngModel)]="editedComment" ></textarea>
+    
+            <button *ngIf="editCmtMode" (click)=onUpdateCmt() class="ui primary mini button">Update</button>
+            <button *ngIf="checUser"  class="ui red mini  button" (click)="onDelete()" >Delete</button>
+            <button *ngIf="checUser && !editCmtMode" class="ui green mini  button" (click)="onEdit()">Edit</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="ui fixed inverted menu">
+  <div class="ui container">
+    <div class="header item nonu">BlogField</div>
+    <a routerLink="blogs" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"  class="item nonu"><i class="home icon"></i>Home</a>
+
+    <a routerLink="blogs/new" *ngIf="this.appService.user && this.appService.user.activated ==true" [routerLinkActive]="['active']" class="item nonu"><i class="edit icon"></i>New Blog</a>
+     
+    <div class="right menu">
+      <a *ngIf="!this.appService.user" class="item nonu" [routerLinkActive]="['active']" routerLink="register"><i class="user plus icon"></i>Sign Up</a>
+      <a *ngIf="!this.appService.user"class="item nonu" [routerLinkActive]="['active']" routerLink="login"><i class="sign in alternate icon"></i>Login</a>  
+        
+      <a *ngIf="this.appService.user&&!this.appService.user.isAdmin" class="item nonu" [routerLinkActive]="['active']" routerLink="user"><i class="user circle icon"></i>Logged In As {{this.appService.user.name}}</a>
+      <a *ngIf="this.appService.user&&this.appService.user.isAdmin" class="item nonu" [routerLinkActive]="['active']" routerLink="admin"><i class="user circle icon"></i>Logged In As {{this.appService.user.name}}</a>
+      
+      <a *ngIf="this.appService.user" class="item nonu" (click)="onLogout()"><i class="sign out alternate icon"></i>Logout</a>
+    </div>
+
+  </div>
+
+</div>
+
+ 
